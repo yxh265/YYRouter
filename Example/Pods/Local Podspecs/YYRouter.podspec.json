@@ -1,0 +1,22 @@
+{
+  "name": "YYRouter",
+  "version": "0.1.0",
+  "summary": "A short description of YYRouter.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/余旭洪/YYRouter",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "余旭洪": "yuxuhong@ad61v1.com"
+  },
+  "source": {
+    "git": "https://github.com/余旭洪/YYRouter.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "9.0"
+  },
+  "source_files": "YYRouter/Classes/**/*"
+}
