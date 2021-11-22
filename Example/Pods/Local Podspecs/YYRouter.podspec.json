@@ -1,22 +1,29 @@
 {
   "name": "YYRouter",
-  "version": "0.1.0",
-  "summary": "A short description of YYRouter.",
-  "description": "TODO: Add long description of the pod here.",
-  "homepage": "https://github.com/余旭洪/YYRouter",
+  "version": "0.0.2",
+  "summary": "YYRouter路由组件.",
+  "description": "YYRouter一个简单好用的swift路由组件.",
+  "homepage": "https://github.com/yxh265/YYRouter",
   "license": {
     "type": "MIT",
     "file": "LICENSE"
   },
   "authors": {
-    "余旭洪": "yuxuhong@ad61v1.com"
+    "yxh265": "yxh265@qq.com"
   },
   "source": {
-    "git": "https://github.com/余旭洪/YYRouter.git",
-    "tag": "0.1.0"
+    "git": "https://github.com/yxh265/YYRouter.git",
+    "tag": "0.0.2"
   },
   "platforms": {
     "ios": "9.0"
   },
-  "source_files": "YYRouter/Classes/**/*"
+  "swift_versions": "5.0",
+  "subspecs": [
+    {
+      "name": "YYRouter",
+      "source_files": "YYRouter/Classes/YYRouter/*"
+    }
+  ],
+  "swift_version": "5.0"
 }
