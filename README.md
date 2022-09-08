@@ -32,7 +32,32 @@ YYRouter.pushTo(jumpParams: ["to": "app://ViewController"])
 ```
 
 
+
+## 路由调用的传参
+
+这里负责传参
+
+```Sw
+YYRouter.pushTo(jumpParams: ["to": "app://ViewController", "param1": "1", "param2": 2])
+```
+
+ 接收端负责接收
+
+```Sw
+extension ViewController: YYRoutable {
+    static func createInstance(params: [String : Any]) -> YYRoutable {
+        let vc = ViewController()
+        vc.param1 = params["param1"] as? String ?? ""
+        vc.param2 = params["param2"] as? Int ?? 0
+        return vc
+    }
+}
+```
+
+
+
 ## 介绍
+
 ###  Swift路由组件（一）使用路由的目的和实现思想
 
 https://juejin.cn/post/7032164814210203685/
