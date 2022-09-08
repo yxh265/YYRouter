@@ -27,6 +27,13 @@ class BController: UIViewController {
         button.backgroundColor = .red
         button.addTarget(self, action: #selector(buttonAction2), for: .touchUpInside)
         self.view.addSubview(button)
+        
+        button = UIButton()
+        button.frame = CGRect(x: 100, y: 300, width: 200, height: 40)
+        button.setTitle("跳 C 原生页面", for: .normal)
+        button.backgroundColor = .gray
+        button.addTarget(self, action: #selector(buttonAction3), for: .touchUpInside)
+        self.view.addSubview(button)
     }
     
     @objc func buttonAction1() {
@@ -34,6 +41,9 @@ class BController: UIViewController {
     }
     @objc func buttonAction2() {
         YYRouter.pushTo(jumpParams: ["to": "https://www.qq.com", "value": "2"])
+    }
+    @objc func buttonAction3() {
+        YYRouter.pushTo(jumpParams: ["to": "native://view/CController", "title": "定制跳转"])
     }
 }
 

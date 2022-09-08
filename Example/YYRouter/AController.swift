@@ -42,11 +42,6 @@ extension AController: YYRoutable {
     static func createInstance(params: [String : Any]) -> YYRoutable {
         return AController()
     }
-    
-    // 如果有特殊逻辑，可以自己实现路由做特殊跳转
-//    func executeRouter(params: [String: Any] = [:], navRootVC: UIViewController? = nil) {
-//
-//    }
 }
 
 // 添加路由表
