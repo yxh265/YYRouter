@@ -39,11 +39,8 @@ public extension YYRoutable {
     func defaultPush(to controller: UIViewController, params: [String: Any] = [:], navRootVC: UIViewController? = nil) {
         let animated = (params["animated"] as? Bool) ?? true
 
-        if navRootVC?.navigationController != nil {
-            navRootVC?.navigationController?.pushViewController(controller, animated: animated)
-        } else {
-            YYRouterUtil.currentNavigationController()?.pushViewController(controller, animated: animated)
+        if let rootVC = YYRouterUtil.getNavigationController(navRootVC: navRootVC) {
+            rootVC.pushViewController(controller, animated: animated)
         }
-
     }
 }

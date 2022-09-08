@@ -26,6 +26,17 @@ public struct YYRouterUtil {
         return currentController().navigationController
     }
     
+    /// 获取可用的导航控制器
+    public static func getNavigationController(navRootVC: UIViewController? = nil) -> UINavigationController? {
+        if let rootVC = navRootVC as? UINavigationController {
+            return rootVC
+        } else if let rootVC = navRootVC?.navigationController {
+            return rootVC
+        } else {
+            return currentNavigationController()
+        }
+    }
+    
     /// 通过递归拿到当前显示的UIViewController
     public static func getCurrent(controller: UIViewController) -> UIViewController {
         if controller is UINavigationController {

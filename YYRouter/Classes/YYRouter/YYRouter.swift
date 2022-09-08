@@ -56,9 +56,7 @@ public class YYRouter: NSObject {
 
         for i in 0 ..< actualClassCount {
             let currentClass: AnyClass = allClasses[Int(i)]
-            if (class_getInstanceMethod(currentClass, NSSelectorFromString("methodSignatureForSelector:")) != nil),
-               (class_getInstanceMethod(currentClass, NSSelectorFromString("doesNotRecognizeSelector:")) != nil),
-               let cls = currentClass as? YYRoutable.Type {
+            if let cls = currentClass as? YYRoutable.Type {
                 var isSet = checkList["\(cls)"]
                 if isSet == nil {
                     var curCls: AnyClass = cls as AnyClass
@@ -79,6 +77,14 @@ public class YYRouter: NSObject {
             assert(false, "\(key)有添加路由表，但是没有实现Routable协议，请检查：\(key)。")
         }
         isCheck = true
+        if let classes = actualClassCount as? UnsafeMutableRawPointer {
+            free(classes)
+        }
+#if swift(>=4.1)
+        allClasses.deallocate()
+#else
+        allClasses.deallocate(capacity: expectedClassCount)
+#endif
     }
 #endif
     /// 配置映射文件

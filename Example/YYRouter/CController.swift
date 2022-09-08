@@ -32,10 +32,8 @@ extension CController: YYRoutable {
         let controller = CController()
         controller.titleString = params["title"] as? String ?? "" // 路由传参数
 
-        if navRootVC?.navigationController != nil {
-            navRootVC?.navigationController?.pushViewController(controller, animated: true)
-        } else {
-            YYRouterUtil.currentNavigationController()?.pushViewController(controller, animated: true)
+        if let rootVC = YYRouterUtil.getNavigationController(navRootVC: navRootVC) {
+            rootVC.pushViewController(controller, animated: true)
         }
     }
 }
