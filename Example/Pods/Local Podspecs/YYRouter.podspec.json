@@ -1,6 +1,6 @@
 {
   "name": "YYRouter",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "summary": "YYRouter路由组件.",
   "description": "YYRouter一个简单好用的swift路由组件.",
   "homepage": "https://github.com/yxh265/YYRouter",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/yxh265/YYRouter.git",
-    "tag": "0.0.2"
+    "tag": "0.0.3"
   },
   "platforms": {
     "ios": "9.0"
