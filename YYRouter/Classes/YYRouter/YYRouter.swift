@@ -7,7 +7,7 @@
 import Foundation
 
 public class YYRouter: NSObject {
-    private static var shared = YYRouter()
+    private static let shared = YYRouter()
     
     private static var routers: [String: YYRouterModel] = {
         return config()
@@ -90,9 +90,6 @@ public class YYRouter: NSObject {
     /// 配置映射文件
     private static func config() -> [String: YYRouterModel] {
         let routers = configRoutersFromMethodList()
-#if DEBUG
-        checkRoutableClassesSettingIsConform()
-#endif
         return routers
     }
     
@@ -106,6 +103,10 @@ public class YYRouter: NSObject {
         if let cls = routerModel?.routerClass, let routable = (cls as? YYRoutable.Type)?.createInstance(params: params) {
             return routable
         }
+#if DEBUG
+        // 没有找到路由的时候，才检查路由设置是否合理。
+        checkRoutableClassesSettingIsConform()
+#endif
         return nil
     }
  
@@ -129,5 +130,16 @@ extension YYRouter {
         }
 
         routable.executeRouter(params: params, navRootVC: navRootVC)
+    }
+    /// 获取路由对象，可以用做模块解耦用。
+    /// 给一个路由key，可以拿到其他模块里面的对象。
+    public static func getRouterVC(jumpParams: [String: Any]? = nil) -> UIViewController? {
+        if let jumpParams = jumpParams,
+           let toString = jumpParams["to"] as? String,
+           let routable = YYRouter.getRoutable(toString, params: jumpParams),
+           let vc = routable as? UIViewController {
+            return vc // 通过路由跨模块去拿UIViewController
+        }
+        return nil
     }
 }
