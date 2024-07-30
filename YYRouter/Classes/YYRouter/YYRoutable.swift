@@ -38,8 +38,10 @@ public extension YYRoutable {
     ///   - navRootVC 有的时候不需要取currentVC
     func defaultPush(to controller: UIViewController, params: [String: Any] = [:], navRootVC: UIViewController? = nil) {
         let animated = (params["animated"] as? Bool) ?? true
-
+        let hidesBottomBarWhenPushed = (params["hidesBottomBarWhenPushed"] as? Bool) ?? true
+        
         if let rootVC = YYRouterUtil.getNavigationController(navRootVC: navRootVC) {
+            controller.hidesBottomBarWhenPushed = hidesBottomBarWhenPushed
             rootVC.pushViewController(controller, animated: animated)
         }
     }
