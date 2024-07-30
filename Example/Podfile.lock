@@ -1,7 +1,7 @@
 PODS:
-  - YYRouter (0.0.4):
-    - YYRouter/YYRouter (= 0.0.4)
-  - YYRouter/YYRouter (0.0.4)
+  - YYRouter (0.0.5):
+    - YYRouter/YYRouter (= 0.0.5)
+  - YYRouter/YYRouter (0.0.5)
 
 DEPENDENCIES:
   - YYRouter (from `../`)
@@ -11,7 +11,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  YYRouter: 58ebefc3b8d7f7ee58d2788ddf7347262b2bd601
+  YYRouter: b4cc9b2549dd8f9ebb93b1ab572ad670a730fc93
 
 PODFILE CHECKSUM: ba992e51be9575cae96df94b6f24371257260cdc
 
