@@ -12,13 +12,20 @@ public struct YYRouterUtil {
     }
 
     public static func currentController() -> UIViewController {
-        if let root = delegate().window??.rootViewController {
-            return getCurrent(controller: root)
+        if #available(iOS 13.0, *) {
+            if let keyWindow = UIApplication.shared.connectedScenes.compactMap { $0 as? UIWindowScene }.flatMap { $0.windows }.first(where: { $0.isKeyWindow }), let root = keyWindow.rootViewController {
+                return getCurrent(controller: root)
+            } else if let keyWindow = UIApplication.shared.delegate?.window ?? UIApplication.shared.keyWindow, let root = keyWindow.rootViewController {
+                return getCurrent(controller: root)
+            }
         } else {
-            print("异常问题, 还没有rootVC不应该调用")
-            assert(false, "异常问题, 还没有rootVC不应该调用")
-            return UIViewController()
+            if let root = delegate().window??.rootViewController {
+                return getCurrent(controller: root)
+            }
         }
+        print("异常问题, 还没有rootVC不应该调用")
+        assert(false, "异常问题, 还没有rootVC不应该调用")
+        return UIViewController()
     }
 
     /// 当前的导航控制器
